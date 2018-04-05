@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0B4DEC2075740500AD1AC7 /* CourseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B4DEB2075740500AD1AC7 /* CourseStruct.swift */; };
 		4F426379207403B9000FE12A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F426378207403B9000FE12A /* AppDelegate.swift */; };
 		4F42637B207403B9000FE12A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42637A207403B9000FE12A /* ViewController.swift */; };
 		4F42637E207403B9000FE12A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F42637C207403B9000FE12A /* Main.storyboard */; };
 		4F426380207403BB000FE12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F42637F207403BB000FE12A /* Assets.xcassets */; };
 		4F426383207403BB000FE12A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F426381207403BB000FE12A /* LaunchScreen.storyboard */; };
+		4F42638B20740F88000FE12A /* CoursesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42638A20740F88000FE12A /* CoursesListVC.swift */; };
+		4F42638D2074249F000FE12A /* CourseEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42638C2074249F000FE12A /* CourseEditorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F0B4DEB2075740500AD1AC7 /* CourseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseStruct.swift; sourceTree = "<group>"; };
 		4F426375207403B9000FE12A /* Schedule App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Schedule App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F426378207403B9000FE12A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F42637A207403B9000FE12A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		4F42637F207403BB000FE12A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F426382207403BB000FE12A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F426384207403BB000FE12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F42638A20740F88000FE12A /* CoursesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesListVC.swift; sourceTree = "<group>"; };
+		4F42638C2074249F000FE12A /* CourseEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditorVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 			children = (
 				4F426378207403B9000FE12A /* AppDelegate.swift */,
 				4F42637A207403B9000FE12A /* ViewController.swift */,
+				4F42638A20740F88000FE12A /* CoursesListVC.swift */,
+				4F42638C2074249F000FE12A /* CourseEditorVC.swift */,
+				4F0B4DEB2075740500AD1AC7 /* CourseStruct.swift */,
 				4F42637C207403B9000FE12A /* Main.storyboard */,
 				4F42637F207403BB000FE12A /* Assets.xcassets */,
 				4F426381207403BB000FE12A /* LaunchScreen.storyboard */,
@@ -135,6 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F42638D2074249F000FE12A /* CourseEditorVC.swift in Sources */,
+				4F0B4DEC2075740500AD1AC7 /* CourseStruct.swift in Sources */,
+				4F42638B20740F88000FE12A /* CoursesListVC.swift in Sources */,
 				4F42637B207403B9000FE12A /* ViewController.swift in Sources */,
 				4F426379207403B9000FE12A /* AppDelegate.swift in Sources */,
 			);
