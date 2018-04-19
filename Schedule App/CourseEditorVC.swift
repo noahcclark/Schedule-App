@@ -44,8 +44,16 @@ class CourseEditorVC: UIViewController {
             fridayCheckbox.image = initiateCheckbox(value: currentCourse.friday)
             saturdayCheckbox.image = initiateCheckbox(value: currentCourse.saturday)
             sundayCheckbox.image = initiateCheckbox(value: currentCourse.sunday)
+            startTimePicker.setDate(currentCourse.startTime, animated: true)
+            endTimePicker.setDate(currentCourse.endTime, animated: true)
+            
             
             //NOTE: -- fill out the rest of the fields
+        } else {
+            let dateZero = Date(timeIntervalSince1970: 0)
+            startTimePicker.setDate(dateZero, animated: true)
+            endTimePicker.setDate(dateZero, animated: false)
+            
         }
     }
     
@@ -57,23 +65,26 @@ class CourseEditorVC: UIViewController {
         }
     }
     
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UnwindFromSaveCourseEditor" {
             let courseName = courseNameField.text!
             
-            var courseProfessor = ""
+            let courseProfessor = professorField.text!
+            /*var courseProfessor = ""
             if let professor = professorField.text {
                 courseProfessor = professor
             } else {
                 courseProfessor = ""
-            }
-            
-            var courseLocation = ""
+            }*/
+            let courseLocation = courseLocationField.text!
+            /*var courseLocation = ""
             if let location = courseLocationField.text {
                 courseLocation = location
             } else {
                 courseLocation = ""
-            }
+            }*/
             
             let mondayBool = (mondayCheckbox.image == #imageLiteral(resourceName: "checkbox-checked"))
             let tuesdayBool = (tuesdayCheckbox.image == #imageLiteral(resourceName: "checkbox-checked"))
@@ -83,7 +94,10 @@ class CourseEditorVC: UIViewController {
             let saturdayBool = (saturdayCheckbox.image == #imageLiteral(resourceName: "checkbox-checked"))
             let sundayBool = (sundayCheckbox.image == #imageLiteral(resourceName: "checkbox-checked"))
             
-            currentCourse = Course(name: courseName, professor: courseProfessor, location: courseLocation, monday: mondayBool, tuesday: tuesdayBool, wednesday: wednesdayBool, thursday: thursdayBool, friday: fridayBool, saturday: saturdayBool, sunday: sundayBool, startTimeHour: 0, startTimeMinute: 0, startTimeAMPM: "AM", endTimeHour: 0, endTimeMinute: 0, endTimeAMPM: "AM")
+            let startTime = startTimePicker.date
+            let endTime = endTimePicker.date
+            
+            currentCourse = Course(name: courseName, professor: courseProfessor, location: courseLocation, monday: mondayBool, tuesday: tuesdayBool, wednesday: wednesdayBool, thursday: thursdayBool, friday: fridayBool, saturday: saturdayBool, sunday: sundayBool, startTime: startTime, endTime: endTime)
         }
     }
 
@@ -96,9 +110,40 @@ class CourseEditorVC: UIViewController {
         }
     }
     
-    /*
-    func checkboxClicked(checkbox: UIImage) {
-        let isChecked =
+    //Checkbox checking functions
+    
+    func checkboxChecked(dayCheckbox: UIImageView) {
+        if dayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked") {
+            dayCheckbox.image = #imageLiteral(resourceName: "checkbox-checked")
+        } else {
+            dayCheckbox.image = #imageLiteral(resourceName: "checkbox-unchecked")
+        }
     }
- */
+    
+    @IBAction func mondayCheckboxChecked(_ sender: UITapGestureRecognizer) {
+        checkboxChecked(dayCheckbox: mondayCheckbox)
+    }
+    @IBAction func tuesdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
+        checkboxChecked(dayCheckbox: tuesdayCheckbox)
+    }
+    @IBAction func wednesdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
+        checkboxChecked(dayCheckbox: wednesdayCheckbox)
+    }
+    @IBAction func thursdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
+        checkboxChecked(dayCheckbox: thursdayCheckbox)
+    }
+    @IBAction func fridayCheckboxChecked(_ sender: UITapGestureRecognizer) {
+        checkboxChecked(dayCheckbox: fridayCheckbox)
+    }
+    @IBAction func saturdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
+        checkboxChecked(dayCheckbox: saturdayCheckbox)
+    }
+    @IBAction func sundayCheckboxChecked(_ sender: UITapGestureRecognizer) {
+        checkboxChecked(dayCheckbox: sundayCheckbox)
+    }
+    
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        print(startTimePicker.date)
+    }
+    
 }

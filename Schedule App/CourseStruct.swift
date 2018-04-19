@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 struct Course {
     var name = ""
     var professor = ""
@@ -19,10 +20,6 @@ struct Course {
     var friday: Bool
     var saturday: Bool
     var sunday: Bool
-    var startTimeHour = 0
-    var startTimeMinute = 0
-    var startTimeAMPM = ""
-    var endTimeHour = 0
-    var endTimeMinute = 0
-    var endTimeAMPM = ""
+    var startTime: Date
+    var endTime: Date
 }

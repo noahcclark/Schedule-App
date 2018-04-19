@@ -14,25 +14,25 @@ class CoursesListVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-// HOPEFULLY, THIS COURSES ARRAY IS A DUMMY VARIABLE THAT CAN LATER BE DELETED
-    //BECAUSE
     var coursesArray = [Course]()
     
-    var swift = Course(name: "Swift", professor: "Gallaugher", location: "Fulton 415", monday: true, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false, startTimeHour: 0, startTimeMinute: 0, startTimeAMPM: "AM", endTimeHour: 0, endTimeMinute: 0, endTimeAMPM: "AM")
+    //var swift = Course(name: "Swift", professor: "Gallaugher", location: "Fulton 415", monday: true, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false, startTimeHour: 0, startTimeMinute: 0, startTimeAMPM: "AM", endTimeHour: 0, endTimeMinute: 0, endTimeAMPM: "AM")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        coursesArray.append(swift)
+        //coursesArray.append(swift)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditCourse" {
+        switch segue.identifier {
+        case "EditCourse":
             let destination = segue.destination as! CourseEditorVC
             let index = tableView.indexPathForSelectedRow!.row
             destination.currentCourse = coursesArray[index]
-        } else {
+        case "UnwindFromMenuCoursesList": break
+        default:
             if let selectedPath = tableView.indexPathForSelectedRow {
                 tableView.deselectRow(at: selectedPath, animated: false)
             }
@@ -50,8 +50,6 @@ class CoursesListVC: UIViewController {
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
-    
-    
 }
 
 extension CoursesListVC: UITableViewDelegate, UITableViewDataSource {
