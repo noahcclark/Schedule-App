@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Course {
+struct Course: Codable {
     var name = ""
     var professor = ""
     var location = ""

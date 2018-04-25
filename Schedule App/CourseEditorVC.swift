@@ -110,6 +110,28 @@ class CourseEditorVC: UIViewController {
         }
     }
     
+    //Keyboard resigning first responder
+    
+    @IBAction func nameDoneKeyPressed(_ sender: UITextField) {
+        courseNameField.resignFirstResponder()
+    }
+    
+    @IBAction func professorDoneKeyPressed(_ sender: UITextField) {
+        professorField.resignFirstResponder()
+    }
+    
+    @IBAction func locationDoneKeyPressed(_ sender: UITextField) {
+        courseLocationField.resignFirstResponder()
+    }
+    
+    @IBAction func outsidePressed(_ sender: UITapGestureRecognizer) {
+        courseNameField.resignFirstResponder()
+        professorField.resignFirstResponder()
+        courseLocationField.resignFirstResponder()
+    }
+    
+    
+    
     //Checkbox checking functions
     
     func checkboxChecked(dayCheckbox: UIImageView) {

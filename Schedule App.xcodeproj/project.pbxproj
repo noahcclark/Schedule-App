@@ -15,6 +15,7 @@
 		4F426383207403BB000FE12A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F426381207403BB000FE12A /* LaunchScreen.storyboard */; };
 		4F42638B20740F88000FE12A /* CoursesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42638A20740F88000FE12A /* CoursesListVC.swift */; };
 		4F42638D2074249F000FE12A /* CourseEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42638C2074249F000FE12A /* CourseEditorVC.swift */; };
+		4FDEE87820885154004A556E /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDEE87720885154004A556E /* ScheduleVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4F426384207403BB000FE12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F42638A20740F88000FE12A /* CoursesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesListVC.swift; sourceTree = "<group>"; };
 		4F42638C2074249F000FE12A /* CourseEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEditorVC.swift; sourceTree = "<group>"; };
+		4FDEE87720885154004A556E /* ScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				4F42637A207403B9000FE12A /* ViewController.swift */,
 				4F42638A20740F88000FE12A /* CoursesListVC.swift */,
 				4F42638C2074249F000FE12A /* CourseEditorVC.swift */,
+				4FDEE87720885154004A556E /* ScheduleVC.swift */,
 				4F0B4DEB2075740500AD1AC7 /* CourseStruct.swift */,
 				4F42637C207403B9000FE12A /* Main.storyboard */,
 				4F42637F207403BB000FE12A /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 				4F42638B20740F88000FE12A /* CoursesListVC.swift in Sources */,
 				4F42637B207403B9000FE12A /* ViewController.swift in Sources */,
 				4F426379207403B9000FE12A /* AppDelegate.swift in Sources */,
+				4FDEE87820885154004A556E /* ScheduleVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48QAB2JHUQ;
 				INFOPLIST_FILE = "Schedule App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -310,6 +315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48QAB2JHUQ;
 				INFOPLIST_FILE = "Schedule App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -14,15 +14,24 @@ class CoursesListVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var defaultsData = UserDefaults.standard
     var coursesArray = [Course]()
     
-    //var swift = Course(name: "Swift", professor: "Gallaugher", location: "Fulton 415", monday: true, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false, startTimeHour: 0, startTimeMinute: 0, startTimeAMPM: "AM", endTimeHour: 0, endTimeMinute: 0, endTimeAMPM: "AM")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        //coursesArray.append(swift)
+    }
+    
+    func saveCourses() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(coursesArray) {
+            UserDefaults.standard.set(encoded, forKey: "coursesArray")
+        } else {
+            print("ERROR: Saving encoded did not work")
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,7 +58,9 @@ class CoursesListVC: UIViewController {
             coursesArray.append(sourceViewController.currentCourse!)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
+        saveCourses()
     }
+    
 }
 
 extension CoursesListVC: UITableViewDelegate, UITableViewDataSource {
