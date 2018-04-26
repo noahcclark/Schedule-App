@@ -13,6 +13,9 @@ import UIKit
 class CoursesListVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
+    @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
     var defaultsData = UserDefaults.standard
     var coursesArray = [Course]()
@@ -61,6 +64,21 @@ class CoursesListVC: UIViewController {
         saveCourses()
     }
     
+    @IBAction func editBarButtonPressed(_ sender: UIBarButtonItem) {
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+            editBarButton.title = "Edit"
+            addBarButton.isEnabled = true
+            menuBarButton.isEnabled = true
+        } else {
+            tableView.setEditing(true, animated: true)
+            editBarButton.title = "Done"
+            addBarButton.isEnabled = false
+            menuBarButton.isEnabled = false
+        }
+    }
+    
+    
 }
 
 extension CoursesListVC: UITableViewDelegate, UITableViewDataSource {
@@ -73,5 +91,20 @@ extension CoursesListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath)
         cell.textLabel?.text = coursesArray[indexPath.row].name
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            coursesArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            saveCourses()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let courseToMove = coursesArray[sourceIndexPath.row]
+        coursesArray.remove(at: sourceIndexPath.row)
+        coursesArray.insert(courseToMove, at: destinationIndexPath.row)
+        saveCourses()
     }
 }

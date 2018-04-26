@@ -634,10 +634,17 @@
                                     <segue destination="SlS-bZ-Pwm" kind="presentation" identifier="addCourse" id="z97-xp-Gxz"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Edit" id="Fzn-Vw-zRi"/>
+                            <barButtonItem title="Edit" id="Fzn-Vw-zRi">
+                                <connections>
+                                    <action selector="editBarButtonPressed:" destination="W8A-Jr-CWE" id="LiW-Lq-8SU"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBarButton" destination="epV-RB-JzI" id="lyh-gR-KCm"/>
+                        <outlet property="editBarButton" destination="Fzn-Vw-zRi" id="qN9-28-BFw"/>
+                        <outlet property="menuBarButton" destination="7Zk-uN-6Ti" id="eFW-2x-7gS"/>
                         <outlet property="tableView" destination="fMJ-pf-eGo" id="e8s-dp-M2x"/>
                     </connections>
                 </viewController>
@@ -675,6 +682,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KaM-Qw-MJf">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleCell" textLabel="0Id-fQ-6Zv" detailTextLabel="xqZ-AQ-hi1" style="IBUITableViewCellStyleValue1" id="kHr-lX-uIZ">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -701,6 +709,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7WK-Fh-bt7" appends="YES" id="HI3-vR-GCg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -722,6 +733,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFX-mK-wWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7WK-Fh-bt7">
+                    <connections>
+                        <action selector="tableViewTapped:" destination="XlE-bY-MGb" id="JtM-dH-JMr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2761" y="-822"/>
         </scene>
@@ -1052,9 +1068,6 @@
                                 <date key="date" timeIntervalSinceReferenceDate="544593125.87959504">
                                     <!--2018-04-05 03:52:05 +0000-->
                                 </date>
-                                <connections>
-                                    <action selector="datePickerChanged:" destination="IZj-uL-59E" eventType="valueChanged" id="OrU-1v-GLz"/>
-                                </connections>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="2PB-4c-EOT">
                                 <rect key="frame" x="132" y="577" width="202" height="70"/>
@@ -1304,7 +1317,7 @@
         <image name="checkbox-unchecked" width="56" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ofk-0C-KCT"/>
+        <segue reference="x3T-ST-nxc"/>
         <segue reference="nih-S9-5fl"/>
         <segue reference="0eM-ZL-PAr"/>
     </inferredMetricsTieBreakers>

@@ -164,8 +164,4 @@ class CourseEditorVC: UIViewController {
         checkboxChecked(dayCheckbox: sundayCheckbox)
     }
     
-    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        print(startTimePicker.date)
-    }
-    
 }

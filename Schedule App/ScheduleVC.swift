@@ -15,6 +15,8 @@ class ScheduleVC: UIViewController {
     
     var coursesArray: [Course] = []
     var weekdayCoursesArray: [Course] = []
+    var subtitleCounter = 1
+    var numOfSubtitles = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +76,14 @@ class ScheduleVC: UIViewController {
     @IBAction func segmentedControlDayChanged(_ sender: UISegmentedControl) {
         weekdayCoursesArray = []
         weekdayCoursesArray = loadWeekdayCoursesArray(weekday: weekdaySegmentedControl.titleForSegment(at: weekdaySegmentedControl.selectedSegmentIndex)!)
+        subtitleCounter = 1
         scheduleTableView.reloadData()
     }
+    
+    @IBAction func tableViewTapped(_ sender: UITapGestureRecognizer) {
+        scheduleTableView.reloadData()
+    }
+    
     
 }
 
@@ -89,13 +97,31 @@ extension ScheduleVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell", for: indexPath)
         cell.textLabel?.text = weekdayCoursesArray[indexPath.row].name
         
-        //format the times for the right subtitle using DateFormatter
+        //format the times for the right subtitle in switch case using DateFormatter
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
         let startTimeString = dateFormatter.string(from: weekdayCoursesArray[indexPath.row].startTime)
         let endTimeString = dateFormatter.string(from: weekdayCoursesArray[indexPath.row].endTime)
-        cell.detailTextLabel?.text = "\(startTimeString) - \(endTimeString)"
+        
+        //to switch subtitles
+        switch subtitleCounter {
+        case 2:
+            cell.detailTextLabel?.text = weekdayCoursesArray[indexPath.row].professor
+        case 3:
+            cell.detailTextLabel?.text = weekdayCoursesArray[indexPath.row].location
+        default:
+            cell.detailTextLabel?.text = "\(startTimeString) - \(endTimeString)"
+        }
+        
+        //update subtitle counter so that next subtitle will show the next in order
+        if indexPath.row == weekdayCoursesArray.count-1 {
+            if subtitleCounter == numOfSubtitles {
+                subtitleCounter = 1
+            } else {
+                subtitleCounter += 1
+            }
+        }
         
         return cell
     }
