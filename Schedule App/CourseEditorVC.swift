@@ -9,10 +9,8 @@
 import UIKit
 
 class CourseEditorVC: UIViewController {
-    //NOTE: -- need to have save button as .isHidden if:
-        //1) courseNameField.text == ""
-        //2) start time >= end time
     
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var courseNameField: UITextField!
     @IBOutlet weak var professorField: UITextField!
     @IBOutlet weak var courseLocationField: UITextField!
@@ -46,15 +44,14 @@ class CourseEditorVC: UIViewController {
             sundayCheckbox.image = initiateCheckbox(value: currentCourse.sunday)
             startTimePicker.setDate(currentCourse.startTime, animated: true)
             endTimePicker.setDate(currentCourse.endTime, animated: true)
-            
-            
-            //NOTE: -- fill out the rest of the fields
         } else {
             let dateZero = Date(timeIntervalSince1970: 0)
             startTimePicker.setDate(dateZero, animated: true)
             endTimePicker.setDate(dateZero, animated: false)
-            
         }
+        
+        enableDisableSaveButton()
+        
     }
     
     func initiateCheckbox(value: Bool) -> UIImage {
@@ -72,20 +69,7 @@ class CourseEditorVC: UIViewController {
             let courseName = courseNameField.text!
             
             let courseProfessor = professorField.text!
-            /*var courseProfessor = ""
-            if let professor = professorField.text {
-                courseProfessor = professor
-            } else {
-                courseProfessor = ""
-            }*/
             let courseLocation = courseLocationField.text!
-            /*var courseLocation = ""
-            if let location = courseLocationField.text {
-                courseLocation = location
-            } else {
-                courseLocation = ""
-            }*/
-            
             let mondayBool = (mondayCheckbox.image == #imageLiteral(resourceName: "checkbox-checked"))
             let tuesdayBool = (tuesdayCheckbox.image == #imageLiteral(resourceName: "checkbox-checked"))
             let wednesdayBool = (wednesdayCheckbox.image == #imageLiteral(resourceName: "checkbox-checked"))
@@ -109,6 +93,37 @@ class CourseEditorVC: UIViewController {
             navigationController?.popViewController(animated: true)
         }
     }
+    
+    //Save button enabled/disabled
+    
+    func enableDisableSaveButton() {
+        if let courseNameFieldCount = courseNameField.text?.count, courseNameFieldCount == 0 {
+            saveBarButton.isEnabled = false
+        }
+        
+        else if startTimePicker.date > endTimePicker.date {
+            saveBarButton.isEnabled = false
+        }
+        
+        else if (mondayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked")) && (tuesdayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked")) && (wednesdayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked")) && (thursdayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked")) && (fridayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked")) && (saturdayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked")) && (sundayCheckbox.image == #imageLiteral(resourceName: "checkbox-unchecked")) {
+            saveBarButton.isEnabled = false
+        } else {
+            saveBarButton.isEnabled = true
+        }
+    }
+    
+    @IBAction func courseNameFieldChanged(_ sender: UITextField) {
+        enableDisableSaveButton()
+    }
+    
+    @IBAction func startTimePickerChanged(_ sender: UIDatePicker) {
+        enableDisableSaveButton()
+    }
+    
+    @IBAction func endTimePickerChanged(_ sender: UIDatePicker) {
+        enableDisableSaveButton()
+    }
+    
     
     //Keyboard resigning first responder
     
@@ -144,24 +159,31 @@ class CourseEditorVC: UIViewController {
     
     @IBAction func mondayCheckboxChecked(_ sender: UITapGestureRecognizer) {
         checkboxChecked(dayCheckbox: mondayCheckbox)
+        enableDisableSaveButton()
     }
     @IBAction func tuesdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
         checkboxChecked(dayCheckbox: tuesdayCheckbox)
+        enableDisableSaveButton()
     }
     @IBAction func wednesdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
         checkboxChecked(dayCheckbox: wednesdayCheckbox)
+        enableDisableSaveButton()
     }
     @IBAction func thursdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
         checkboxChecked(dayCheckbox: thursdayCheckbox)
+        enableDisableSaveButton()
     }
     @IBAction func fridayCheckboxChecked(_ sender: UITapGestureRecognizer) {
         checkboxChecked(dayCheckbox: fridayCheckbox)
+        enableDisableSaveButton()
     }
     @IBAction func saturdayCheckboxChecked(_ sender: UITapGestureRecognizer) {
         checkboxChecked(dayCheckbox: saturdayCheckbox)
+        enableDisableSaveButton()
     }
     @IBAction func sundayCheckboxChecked(_ sender: UITapGestureRecognizer) {
         checkboxChecked(dayCheckbox: sundayCheckbox)
+        enableDisableSaveButton()
     }
     
 }

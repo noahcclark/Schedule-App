@@ -840,6 +840,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
+                                    <action selector="courseNameFieldChanged:" destination="IZj-uL-59E" eventType="editingChanged" id="80b-Z0-m2p"/>
                                     <action selector="nameDoneKeyPressed:" destination="IZj-uL-59E" eventType="primaryActionTriggered" id="OeY-eq-xUn"/>
                                 </connections>
                             </textField>
@@ -1068,6 +1069,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="544593125.87959504">
                                     <!--2018-04-05 03:52:05 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="startTimePickerChanged:" destination="IZj-uL-59E" eventType="valueChanged" id="55g-Xm-2Np"/>
+                                </connections>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="2PB-4c-EOT">
                                 <rect key="frame" x="132" y="577" width="202" height="70"/>
@@ -1077,6 +1081,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="544593125.87959504">
                                     <!--2018-04-05 03:52:05 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="endTimePickerChanged:" destination="IZj-uL-59E" eventType="valueChanged" id="IM2-Br-Dda"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vd-56-IQN">
                                 <rect key="frame" x="16" y="513" width="85" height="42"/>
@@ -1188,6 +1195,7 @@
                         <outlet property="mondayCheckbox" destination="crf-9S-msm" id="lzX-1w-jlk"/>
                         <outlet property="professorField" destination="OqA-r6-NGa" id="e1Y-zW-vGR"/>
                         <outlet property="saturdayCheckbox" destination="uWE-Im-U24" id="dyr-sV-0sU"/>
+                        <outlet property="saveBarButton" destination="y9s-v9-pLJ" id="Yq8-SK-MZW"/>
                         <outlet property="startTimePicker" destination="JlD-yz-xxo" id="GIf-Au-uUg"/>
                         <outlet property="sundayCheckbox" destination="S96-Za-AOd" id="OkM-mG-bma"/>
                         <outlet property="thursdayCheckbox" destination="TY0-5N-WHB" id="MbN-jD-UBt"/>
