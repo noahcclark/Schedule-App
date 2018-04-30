@@ -107,9 +107,17 @@ extension ScheduleVC: UITableViewDelegate, UITableViewDataSource {
         //to switch subtitles
         switch subtitleCounter {
         case 2:
-            cell.detailTextLabel?.text = weekdayCoursesArray[indexPath.row].professor
+            if weekdayCoursesArray[indexPath.row].professor != "" {
+                cell.detailTextLabel?.text = weekdayCoursesArray[indexPath.row].professor
+            } else {
+                cell.detailTextLabel?.text = "Professor: N/A"
+            }
         case 3:
-            cell.detailTextLabel?.text = weekdayCoursesArray[indexPath.row].location
+            if weekdayCoursesArray[indexPath.row].location != "" {
+                cell.detailTextLabel?.text = weekdayCoursesArray[indexPath.row].location
+            } else {
+                cell.detailTextLabel?.text = "Location: N/A"
+            }
         default:
             cell.detailTextLabel?.text = "\(startTimeString) - \(endTimeString)"
         }
